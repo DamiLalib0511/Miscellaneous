@@ -1,0 +1,38 @@
+        //initializing all variables//
+        Dim S As String = ""
+        Dim Legnth As Integer = 0
+        Dim letter As Char = ""
+        Dim Flag As Boolean = False
+        Dim NotPres As Char = ""
+        Dim Flag2 As Boolean = True
+        //taking input
+        Console.WriteLine("Please enter the string:")
+        S = Console.ReadLine()
+        Legnth = Len(S)
+
+        //97 to 122 is the range of ascii in which all small letters fall in//
+         //flag needs to be kept as false at the beinning of each loop to ensure all letters are checked//
+         
+        For AlphaLoop = 97 To 122
+            Flag = False
+            For loop2 = 1 To Legnth
+                letter = Mid(S, loop2, 1)
+                If Asc(letter) = AlphaLoop Then
+                    Flag = True
+                    Exit For
+                End If
+
+            Next
+            //Flag2 becomes false when any letter is missing//
+            If Flag = False Then
+                NotPres = Chr(AlphaLoop)
+                Console.Write("The letter '" & NotPres & "' is not present in the string...")
+                Flag2 = False
+            End If
+
+
+        Next
+        If Flag2 = True Then
+            Console.Write("All the letters are present in the string...")
+        End If
+        Console.ReadKey()
